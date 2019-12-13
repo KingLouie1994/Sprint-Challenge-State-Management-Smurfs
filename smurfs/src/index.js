@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { smurfsReducer, formReducer } from "./state/reducers";
 import Smurfs from "./components/Smurfs";
 import Form from "./components/Form";
+import styled from 'styled-components';
 
 const monsterReducer = combineReducers({
   smurfs: smurfsReducer,
@@ -23,11 +24,23 @@ export const store = createStore(
   )
 );
 
+// Styling here:
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-    <Form />
-    <Smurfs />
-  </Provider>,
+  <StyledContainer>
+    <Provider store={store}>
+      <App />
+      <Form />
+      <Smurfs />
+    </Provider>
+  </StyledContainer>,
   document.getElementById("root")
 );
+
+

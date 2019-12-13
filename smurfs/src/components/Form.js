@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
+import styled from "styled-components";
 
 export function Form({ formValues, changeInput, createSmurf }) {
   const onValueChange = event => {
@@ -13,29 +14,23 @@ export function Form({ formValues, changeInput, createSmurf }) {
   };
 
   return (
-    <form className="component" onSubmit={onFormSubmit}>
-      <h3>Add a Smurf!</h3>
+    <StyledForm className="component" onSubmit={onFormSubmit}>
+      <h3>Add a Smurf here:</h3>
       <label>
         Name:
-        <input 
-          value={formValues.name} 
-          onChange={onValueChange} 
-          name="name" />
+        <StyledInput value={formValues.name} onChange={onValueChange} name="name" />
       </label>
       <br />
 
       <label>
         Age:
-        <input 
-          value={formValues.age} 
-          onChange={onValueChange} 
-          name="age" />
+        <StyledInput value={formValues.age} onChange={onValueChange} name="age" />
       </label>
       <br />
 
       <label>
         Height:
-        <input
+        <StyledInput
           value={formValues.height}
           onChange={onValueChange}
           name="height"
@@ -43,9 +38,34 @@ export function Form({ formValues, changeInput, createSmurf }) {
       </label>
       <br />
 
-      <input type="submit" />
-    </form>
+      <StyledButton type="submit" />
+    </StyledForm>
   );
 }
 
 export default connect(state => state, actionCreators)(Form);
+
+//Styling here:
+
+const StyledForm = styled.form`
+  border: orange 1px solid;
+  border-radius: 10px;
+  width: 200px;
+  margin: 60px auto 30px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+`;
+
+const StyledInput = styled.input`
+  color: orange;
+`;
+
+const StyledButton = styled.input`
+  width: 100px;
+  font-size: 20px;
+  background-color: orange;
+  color: white;
+  border-radius: 5px;
+`;

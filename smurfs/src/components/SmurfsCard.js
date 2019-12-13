@@ -17,7 +17,7 @@ export default function SmurfCard({ smurf }) {
 const StyledCard = styled.div`
 color: white;
 background-color: orange;
-width: 15%;
+width: 20%;
 text-align: center;
 padding: 0.5%;
 margin: 0.5%;
