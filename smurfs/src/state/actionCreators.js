@@ -15,3 +15,30 @@ export const getSmurfs = () => dispatch => {
       console.log(err);
     });
 };
+
+export function changeInput(target) {
+  return {
+    type: types.ON_INPUT_CHANGE,
+    payload: {
+      name: target.name,
+      value: target.value
+    }
+  };
+}
+
+export const createSmurf = newSmurf => dispatch => {
+  axios.post("http://localhost:3333/smurfs", newSmurf)
+    .then(response => {
+      dispatch({
+        type: types.ADD_SMURF,
+        payload: response.data
+      });
+      dispatch({
+          type: types.ADD_SMURF_SUCCESS
+      })
+    })
+
+    .catch(error => {
+      console.log(error.message);
+    });
+};

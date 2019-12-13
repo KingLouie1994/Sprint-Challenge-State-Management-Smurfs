@@ -5,11 +5,13 @@ import App from "./components/App";
 import thunk from "redux-thunk";
 import { combineReducers, createStore, compose, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import { smurfsReducer } from "./state/reducers";
+import { smurfsReducer, formReducer } from "./state/reducers";
 import Smurfs from "./components/Smurfs";
+import Form from "./components/Form";
 
 const monsterReducer = combineReducers({
-  smurfs: smurfsReducer
+  smurfs: smurfsReducer,
+  formValues: formReducer
 });
 
 export const store = createStore(
@@ -24,6 +26,7 @@ export const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <App />
+    <Form />
     <Smurfs />
   </Provider>,
   document.getElementById("root")
